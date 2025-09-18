@@ -1,27 +1,41 @@
 #include "core/menu.hpp"
+#include <raygui-cpp/Bounds.h>
+#include <raylib.h>
 
-Menu::Menu() : o_playBtn(), o_setBtn(), o_exitBtn() {
-    // Constructor implementation
-}
+#define RAYGUI_IMPLEMENTATION
+#include <raygui-cpp.h>
 
-Menu::~Menu() {
-    // Destructor implementation
-}
+Menu::Menu() = default;
+Menu::~Menu() = default;
 
 void Menu::init() {
-    o_playBtn.SetBounds(::rgc::Bounds::WithText("Play", 22, {20, 50}));
-    o_setBtn.SetBounds(::rgc::Bounds::WithText("Settings", 22, {20, 120}));
-    o_exitBtn.SetBounds(::rgc::Bounds::WithText("Exit", 22, {20, 190}));
+    // Reserve space for 3 buttons
+    buttons.reserve(3);
+
+    // Create buttons directly into the vector
+    buttons.emplace_back(); // Play
+    buttons.emplace_back(); // Settings
+    buttons.emplace_back(); // Exit
+
+    // Set their positions (top-left corner)
+    buttons[0].SetBounds({20, 20, 150, 40});      // Play
+    buttons[1].SetBounds({20, 70, 150, 40});      // Settings
+    buttons[2].SetBounds({20, 120, 150, 40});     // Exit
+
+    buttons[0].SetText("Play");
+    buttons[1].SetText("Settings");
+    buttons[2].SetText("Exit");
 }
 
 void Menu::update() {
-    o_playBtn.Update();
-    o_setBtn.Update();
-    o_exitBtn.Update();
+    for (auto& btn : buttons) {
+        btn.Update();
+        btn.Show(true);
+    }
 }
 
 void Menu::shutdown() {
-    o_playBtn.Disable();
-    o_setBtn.Disable();
-    o_exitBtn.Disable();
+    for (auto& btn : buttons) {
+        btn.Disable();
+    }
 }

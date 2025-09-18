@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include <raylib-cpp.hpp>
 
+#include <raylib-cpp.hpp>
 
 #include "menu.hpp"
 
@@ -12,8 +12,8 @@ class Core {
         Menu menu;
 
     public:
-        Core(): o_window() {};
-        ~Core() {}
+        Core();
+        ~Core();
 
     public:
         void init();

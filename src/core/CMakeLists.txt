@@ -11,3 +11,5 @@ target_link_libraries(Core
         raygui_cpp
         raylib
 )
+
+target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src)

@@ -1,13 +1,11 @@
 #pragma once
-
-#include <raygui-cpp.h>
 #include <cstdint>
+
+#include <raygui-cpp/Button.h>
 
 class Menu {
     private:
-        ::rgc::Button o_playBtn;
-        ::rgc::Button o_setBtn;
-        ::rgc::Button o_exitBtn;
+        std::vector<rgc::Button> buttons;
 
     public:
         Menu();

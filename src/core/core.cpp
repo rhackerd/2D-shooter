@@ -1,5 +1,11 @@
 #include "core/core.hpp"
 
+Core::Core(): o_window() {
+
+}
+
+Core::~Core() {
+}
 void Core::init() {
     o_window.Init(800,600, "2D shooter", FLAG_WINDOW_RESIZABLE);
     menu.init();
