@@ -25,6 +25,17 @@ void Menu::init() {
     buttons[0].SetText("Play");
     buttons[1].SetText("Settings");
     buttons[2].SetText("Exit");
+
+    buttons[0].OnClick([&]() {
+        action = 0;
+    });
+
+    buttons[1].OnClick([&]() {
+        action = 1;
+    });
+    buttons[2].OnClick([&]()  {
+        action = 2;
+    });
 }
 
 void Menu::update() {
@@ -37,5 +48,7 @@ void Menu::update() {
 void Menu::shutdown() {
     for (auto& btn : buttons) {
         btn.Disable();
+        btn.OnClick(nullptr);
     }
+    buttons.clear();
 }

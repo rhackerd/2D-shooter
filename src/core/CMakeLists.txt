@@ -12,4 +12,4 @@ target_link_libraries(Core
         raylib
 )
 
-target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src)
+target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src ${Physac_SOURCE_DIR}/src)
