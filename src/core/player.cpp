@@ -41,8 +41,6 @@ void Player::update() {
 }
 
 void Player::render() {
-    
-
     m_texture.Draw(cpBodyGetPosition(body).x, cpBodyGetPosition(body).y);
 }
 

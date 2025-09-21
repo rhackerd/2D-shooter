@@ -12,5 +12,4 @@ void Playable::update() {
     velocity.y = (raylib::Keyboard::IsKeyDown(KEY_S) - raylib::Keyboard::IsKeyDown(KEY_W)) * speed;
     velocity.x = (raylib::Keyboard::IsKeyDown(KEY_D) - raylib::Keyboard::IsKeyDown(KEY_A)) * speed;
     cpBodySetVelocity(body, velocity);
-    
 };
