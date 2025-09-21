@@ -10,7 +10,7 @@ target_link_libraries(Core
         raylib_cpp
         raygui_cpp
         raylib
-        chipmunk_static
+        box2d
 )
 
-target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src ${chipmunk_SOURCE_DIR}/include)
+target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src)

@@ -9,15 +9,12 @@ Menu::Menu() = default;
 Menu::~Menu() = default;
 
 void Menu::init() {
-    // Reserve space for 3 buttons
     buttons.reserve(3);
 
-    // Create buttons directly into the vector
     buttons.emplace_back(); // Play
     buttons.emplace_back(); // Settings
     buttons.emplace_back(); // Exit
 
-    // Set their positions (top-left corner)
     buttons[0].SetBounds({20, 20, 150, 40});      // Play
     buttons[1].SetBounds({20, 70, 150, 40});      // Settings
     buttons[2].SetBounds({20, 120, 150, 40});     // Exit

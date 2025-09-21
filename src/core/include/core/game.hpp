@@ -1,10 +1,11 @@
 #pragma once
 
+#include <box2d/id.h>
 #include <string>
 #include <raylib-cpp.hpp>
 #include "playable.hpp"
-
-#include <chipmunk/chipmunk.h>
+#include "core/physics.hpp"
+#include <box2d/box2d.h>
 
 class Game {
     private:
@@ -12,9 +13,9 @@ class Game {
 
         ::raylib::Camera2D camera;
 
-        cpSpace* space;
+        b2WorldId world;
 
-
+        Entity box;
     public:
         Game();
         ~Game();
