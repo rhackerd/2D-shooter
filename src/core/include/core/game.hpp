@@ -1,12 +1,10 @@
 #pragma once
 
+#include <string>
 #include <raylib-cpp.hpp>
 #include "playable.hpp"
 
-
-#include "physac.h"
-
-
+#include <chipmunk/chipmunk.h>
 
 class Game {
     private:
@@ -14,7 +12,8 @@ class Game {
 
         ::raylib::Camera2D camera;
 
-        
+        cpSpace* space;
+
 
     public:
         Game();

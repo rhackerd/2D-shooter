@@ -1,5 +1,6 @@
 #pragma once
 
+#include "chipmunk/cpVect.h"
 #include <Vector2.hpp>
 #include <raygui-cpp/Bounds.h>
 #include <raylib-cpp.hpp>
@@ -7,7 +8,9 @@
 #include <cstdint>
 #include <string>
 
-#include <physac.h>
+#include <chipmunk/chipmunk.h>
+
+#define PLAYER_SIZE 20
 
 class Player {
 protected:
@@ -17,7 +20,9 @@ protected:
 
     int speed = 200;
 
-    PhysicsBody p_body;
+    cpBody* body;
+    cpShape* shape;
+
 
 public:
     Player();
@@ -25,7 +30,7 @@ public:
 
 public:
     virtual void init(raylib::Color color = raylib::Color::Gray(), 
-                      std::string nick = "player");
+                      std::string nick = "player", cpSpace* space = nullptr);
 
     virtual void update();
     virtual void render();
@@ -33,8 +38,8 @@ public:
     virtual void shutdown();
 
 public:
-    inline void SetPosition(const raylib::Vector2& pos) { p_body->position = pos; }
-    inline raylib::Vector2 GetPosition() const { return p_body->position; }
+    inline void SetPosition(const raylib::Vector2& pos) { return cpBodySetPosition(body, cpv(pos.x, pos.y)); }
+    inline raylib::Vector2 GetPosition() const { return Vector2(cpBodyGetPosition(body).x, cpBodyGetPosition(body).y); }
 
     inline void SetNick(const std::string& nick) { m_nick = nick; }
     inline const std::string& GetNick() const { return m_nick; }

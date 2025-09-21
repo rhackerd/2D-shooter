@@ -1,4 +1,4 @@
-file(GLOB_RECURSE CORE_SRC "*.cpp")
+file(GLOB_RECURSE CORE_SRC "*.cpp" "*.c")
 
 add_library(Core STATIC ${CORE_SRC})
 
@@ -10,6 +10,7 @@ target_link_libraries(Core
         raylib_cpp
         raygui_cpp
         raylib
+        chipmunk_static
 )
 
-target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src ${Physac_SOURCE_DIR}/src)
+target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src ${chipmunk_SOURCE_DIR}/include)

@@ -16,6 +16,7 @@ void Core::init() {
 };
 
 void Core::run() {
+    SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
     while (running && !o_window.ShouldClose()) {
 
         o_window.BeginDrawing();
