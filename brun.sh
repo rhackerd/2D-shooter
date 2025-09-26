@@ -1,4 +1,4 @@
 cd build
 cmake --build .
-cd src/app
-./app
+cd ..
+./build/src/app/app

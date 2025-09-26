@@ -1,11 +1,15 @@
 #pragma once
 
+#include <Vector4.hpp>
 #include <box2d/id.h>
+#include <raylib.h>
 #include <string>
 #include <raylib-cpp.hpp>
 #include "playable.hpp"
 #include "core/physics.hpp"
 #include <box2d/box2d.h>
+
+#define MAX_BOXES 5
 
 class Game {
     private:
@@ -15,7 +19,12 @@ class Game {
 
         b2WorldId world;
 
-        Entity box;
+        ::raylib::Shader shadows;
+
+        std::vector<Entity> boxes;
+
+        raylib::Vector4 boxdata[MAX_BOXES]; // Compiled boxes
+
     public:
         Game();
         ~Game();

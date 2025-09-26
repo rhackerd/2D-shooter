@@ -26,3 +26,5 @@ void destroyBox(Entity &entity, b2WorldId world);
 
 void DrawRectangleB2(const Entity& entity, Color color);
 void DrawRectangleB2Ex(b2Vec2 pos, b2Vec2 extent, Color color);
+
+Rectangle getRectangle(const Entity& entity);

@@ -49,6 +49,24 @@ void DrawRectangleB2Ex(b2Vec2 pos, b2Vec2 extent, Color color) {
     DrawRectangle((int)topLeftX + 10, (int)topLeftY +10, (int)(pixelHalfWidth * 2), (int)(pixelHalfHeight * 2), color);
 }
 
+Rectangle getRectangle(const Entity& entity) {
+    b2Vec2 pos = b2Body_GetPosition(entity.bodyId);
+    b2Vec2 ext = entity.extent;
+
+    float pixelX = pos.x * physicslenght;
+    float pixelY = pos.y * physicslenght;
+    float pixelHalfWidth = ext.x * physicslenght;
+    float pixelHalfHeight = ext.y * physicslenght;
+
+    return (Rectangle){
+        pixelX - pixelHalfWidth,   // top-left x
+        pixelY - pixelHalfHeight,  // top-left y
+        pixelHalfWidth * 2,        // width
+        pixelHalfHeight * 2        // height
+    };
+}
+
+
 void DrawRectangleB2(const Entity& entity, Color color) {
     b2Vec2 pos = b2Body_GetPosition(entity.bodyId);
     DrawRectangleB2Ex(pos, entity.extent, color);
