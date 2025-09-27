@@ -1,6 +1,7 @@
 #include "core/game.hpp"
 #include "core/physics.hpp"
 #include <box2d/box2d.h>
+#include <box2d/id.h>
 #include <box2d/math_functions.h>
 #include <box2d/types.h>
 #include <iostream>
@@ -34,8 +35,6 @@ void Game::init() {
     def.position = {500.0f / 50.0f, 200.0f / 50.0f};
     boxes.emplace_back(createBoxEx(world, def, {100.0f / 50.0f, 100.0f / 50.0f}));
 
-    // Load shader
-    shadows = ::raylib::Shader(0, "shader.fs");
 }
 
 void Game::update() {
@@ -67,5 +66,11 @@ void Game::shutdown() {
 
     for (Entity&box : boxes) {
         destroyBox(box, world);
+    };
+    boxes.clear();
+
+    if (b2World_IsValid(world)) {
+        b2DestroyWorld(world);
+        world = b2_nullWorldId;
     };
 }

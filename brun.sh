@@ -1,4 +1,4 @@
 cd build
 cmake --build .
 cd ..
-./build/src/app/app
+./build/src/app/2D-shooter

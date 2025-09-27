@@ -12,6 +12,8 @@ target_link_libraries(Core
         raylib
         box2d
         enet_static
+        nlohmann_json
+        discord-rpc
 )
 
 target_include_directories(Core PUBLIC ${raygui_SOURCE_DIR}/src)
