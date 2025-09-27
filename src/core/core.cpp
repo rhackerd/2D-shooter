@@ -69,6 +69,7 @@ void Core::run() {
                     continueToGame = false;
                 }else if(network.isConnected()) {
                     continueToGame = true;
+                    network.run();
                 }
 
                 switch (network.getConnectMessage()) {
@@ -80,6 +81,7 @@ void Core::run() {
                 if(!network.isConnected()) {switchScene(0); continue;};
                 game.update();
                 game.render();
+                
             }
         };
 

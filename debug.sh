@@ -1,1 +1,1 @@
-gdb build/src/app/app
+gdb build/src/app/2D-shooter

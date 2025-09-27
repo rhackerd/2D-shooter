@@ -27,6 +27,34 @@ enum class LoadingMessage : int {
     Canceled
 };
 
+
+#pragma pack(push, 1)
+struct PlayerUpdate {
+    int32_t velX;
+    int32_t velY;
+    uint16_t rot;   // 0-360
+    uint16_t range; // 0-1000
+};
+struct PlayerUpdateCorrective {
+    int32_t velX;
+    int32_t velY;
+    int64_t posX;
+    int64_t posY;
+    uint16_t rot;   // 0-360
+    uint16_t range; // 0-1000
+};
+struct Rect {
+    int32_t x;
+    int32_t y;
+    int32_t w;
+    int32_t h;
+};
+struct MapChunk {
+    uint16_t rectCount;
+    Rect rectangles[128];
+};
+#pragma pack(pop)
+
 inline bool operator==(Chanels channel, int value) {
     return static_cast<int>(channel) == value;
 }
@@ -52,6 +80,11 @@ class Network {
         std::atomic<int> connectMessage{(int)LoadingMessage::Nothing};
         std::atomic<bool> cancelConnect{false};
 
+        // Velocity
+        std::atomic<int> velX{0};std::atomic<int> velY{0};
+
+        // Position
+        std::atomic<int> posX{0};std::atomic<int> posY{0};
 
     public:
         Network();
@@ -74,4 +107,7 @@ class Network {
         bool isConnecting() const;
         bool isConnected() const;
         int getConnectMessage() const;
+
+        void setVelocity(int x, int y);
+        void setPosition(int x, int y);
 };
